@@ -13,6 +13,7 @@ dist
 dist-ssr
 coverage
 *.local
+.eslintcache
 
 /cypress/videos/
 /cypress/screenshots/
@@ -31,4 +32,3 @@ coverage
 .env
 .env.*
 !.env.template
-!.env.example
