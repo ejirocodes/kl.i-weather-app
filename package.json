@@ -48,10 +48,6 @@
     "vitest": "^0.13.0",
     "vue-tsc": "^0.35.2"
   },
-  "lint-staged": {
-    "*.{vue,js,jsx,cjs,mjs,ts,tsx,cts,mts}": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
-  },
   "engines": {
     "node": ">=14",
     "npm": ">=7"
