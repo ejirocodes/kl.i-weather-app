@@ -1,12 +1,17 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+// import { generateTime } from "@/utils/date.utils";
+</script>
 <template>
   <section class="tw-bg-pri">
     <h1>Nigeira</h1>
     <p>Chances of Rain: 5%</p>
 
-    <p>
+    <div>
+      <h2>28&deg;</h2>
       <img src="@/assets/img/rainyday-light.svg" alt="thunder" />
-    </p>
+    </div>
+
+    <!-- <div>{{ generateTime() }}</div> -->
   </section>
 </template>
 
