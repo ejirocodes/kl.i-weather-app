@@ -74,7 +74,15 @@ const isDay = computed(() => props.weather?.weather[0].icon?.includes('d'));
           :stat="(weather?.main.pressure as number)"
         />
       </div>
-      {{ new Date().toLocaleDateString() }}
+      <time class="tw-pt-6">
+        {{
+          new Date().toLocaleDateString('en-US', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+          })
+        }}
+      </time>
     </section>
     <div
       class="tw-absolute tw-top-[54px] tw-left-[148px] -tw-z-10 tw-h-[899px] tw-w-[37rem] tw-rotate-6 tw-rounded-[3rem] tw-bg-sec"

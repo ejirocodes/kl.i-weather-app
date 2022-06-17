@@ -41,7 +41,7 @@ onMounted(() => {
     class="tw-flex tw-min-h-screen tw-w-full tw-justify-between tw-bg-white tw-p-8"
   >
     <div class="tw-w-1/2 tw-bg-red-50">Hello</div>
-    <div class="tw-w-[60%] tw-bg-gray1">
+    <div class="tw-w-[60%] tw-bg-gray1" v-if="weather">
       <WeatherInfo :weather="weather" />
     </div>
   </main>
