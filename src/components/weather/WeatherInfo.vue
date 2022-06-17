@@ -5,6 +5,19 @@ import { kelVinToCel } from '@/utils/temperature.utils';
 import WeatherIcon from './WeatherIcon.vue';
 import WeatherIconsData from '@/data/icons';
 import { computed } from 'vue';
+import WeatherStats from './WeatherStats.vue';
+// import SunLight from '@/assets/img/sun-light.svg';
+const SunriseLight = new URL(
+  '../../assets/img/sunrise-light.svg',
+  import.meta.url
+).href;
+const Humidity = new URL('../../assets/img/humidity-light.svg', import.meta.url)
+  .href;
+const Wind = new URL('../../assets/img/wind-light.svg', import.meta.url).href;
+const Pressure = new URL(
+  '../../assets/img/mostly-cloudy-light.svg',
+  import.meta.url
+).href;
 
 const props = defineProps<{
   weather: Weather | null;
@@ -13,6 +26,8 @@ const props = defineProps<{
 const icon = computed(() => {
   return props.weather?.weather[0]?.icon ?? '01d';
 });
+
+const isDay = computed(() => props.weather?.weather[0].icon?.includes('d'));
 </script>
 
 <template>
@@ -37,37 +52,28 @@ const icon = computed(() => {
       </div>
 
       <div class="tw-flex tw-items-center tw-justify-center">
-        <div class="tw-mr-8">
-          <img
-            src="@/assets/img/sunrise-light.svg"
-            alt="Sunrise"
-            class="tw-w-20"
-          />
-          Sunrise
-        </div>
-        <div class="tw-mr-8">
-          <img
-            src="@/assets/img/humidity-light.svg"
-            alt="Humidity"
-            class="tw-w-20"
-          />
-          Humidity
-        </div>
-        <div class="tw-mr-8">
-          <img src="@/assets/img/wind-light.svg" alt="Wind" class="tw-w-20" />
-          Wind
-        </div>
-
-        <div>
-          <img
-            src="@/assets/img/mostly-cloudy-light.svg"
-            alt="Pressure"
-            class="tw-w-20"
-          />
-          Pressure
-        </div>
+        <WeatherStats
+          :name="isDay ? 'Sunset' : 'Sunrise'"
+          :icon="SunriseLight"
+          :stat="generateTime(weather?.sys[isDay ? 'sunrise' : 'sunset'] as number)"
+        />
+        <WeatherStats
+          :name="'Humidity'"
+          :icon="Humidity"
+          :stat="(weather?.main?.humidity as number)"
+        />
+        <WeatherStats
+          :name="'Wind'"
+          :icon="Wind"
+          :stat="(weather?.wind.speed as number)"
+        />
+        <WeatherStats
+          class="tw-mr-0"
+          :name="'Pressure'"
+          :icon="Pressure"
+          :stat="(weather?.main.pressure as number)"
+        />
       </div>
-      <div>{{ generateTime() }}</div>
       {{ new Date().toLocaleDateString() }}
     </section>
     <div
