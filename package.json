@@ -18,7 +18,7 @@
     "axios": "^0.27.2",
     "pinia": "^2.0.14",
     "vue": "^3.2.36",
-    "vue-router": "^4.0.15"
+    "vue-router": "^4.0.16"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.2",

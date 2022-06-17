@@ -12,9 +12,11 @@ const cordinates = reactive({
   lng: 0,
 });
 const weather = ref<Weather | null>(null);
+const isLoading = ref(false);
 
 const getRandomWeather = async () => {
   try {
+    isLoading.value = true;
     const { lat, lng } = generateRandomLatLng();
     cordinates.lat = lat;
     cordinates.lng = lng;
@@ -23,6 +25,8 @@ const getRandomWeather = async () => {
     console.log(weather.value);
   } catch (error) {
     console.log(error);
+  } finally {
+    isLoading.value = false;
   }
 };
 onMounted(() => {
@@ -51,10 +55,14 @@ onMounted(() => {
         information about daily forecast on-the-fly.
       </p>
       <button
+        :disabled="isLoading"
         @click="getRandomWeather"
+        :class="{
+          'tw-min-w-[208px] !tw-cursor-not-allowed !tw-opacity-50': isLoading,
+        }"
         class="tw-rounded-full tw-bg-pri tw-px-10 tw-py-4 tw-text-white tw-shadow-lg tw-shadow-pri/25 tw-transition-all hover:tw-shadow-md hover:tw-shadow-pri/30 active:tw-scale-95 active:tw-shadow-md active:tw-shadow-pri/0"
       >
-        Random weather
+        {{ isLoading ? 'Processing...' : 'Random weather' }}
       </button>
     </div>
     <div class="tw-w-[60%] tw-bg-gray1" v-if="weather">

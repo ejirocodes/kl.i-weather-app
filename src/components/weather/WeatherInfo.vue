@@ -105,6 +105,5 @@ const isDay = computed(() => props.weather?.weather[0].icon?.includes('d'));
   top: -6px;
   left: 188px;
   font-size: 6rem;
-  /* tw-absolute -tw-top-3 tw-left-[178px] tw-text-[6rem] */
 }
 </style>
