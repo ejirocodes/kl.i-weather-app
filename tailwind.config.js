@@ -7,6 +7,7 @@ module.exports = {
       colors: {
         pri: '#27737D',
         sec: '#EEB22E',
+        gray1: '#DCE4E6',
       },
     },
   },
