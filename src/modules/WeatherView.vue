@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import WeatherInfo from '../components/WeatherInfo.vue';
+import WeatherInfo from '../components/weather/WeatherInfo.vue';
 import { ref, inject, onMounted, reactive } from 'vue';
 import type { AxiosStatic } from 'axios';
 import { getWeather } from '@/services/weather.searvice';
@@ -42,7 +42,7 @@ onMounted(() => {
   >
     <div class="tw-w-1/2 tw-bg-red-50">Hello</div>
     <div class="tw-w-[60%] tw-bg-gray1">
-      <WeatherInfo />
+      <WeatherInfo :weather="weather" />
     </div>
   </main>
 </template>

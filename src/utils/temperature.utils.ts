@@ -1,3 +1,3 @@
 export function kelVinToCel(temperature: number): number {
-  return temperature - 273.15;
+  return Math.floor(temperature - 273.15);
 }
