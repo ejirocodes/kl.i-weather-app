@@ -6,7 +6,7 @@ import WeatherIcon from './WeatherIcon.vue';
 import WeatherIconsData from '@/data/icons';
 import { computed } from 'vue';
 import WeatherStats from './WeatherStats.vue';
-// import SunLight from '@/assets/img/sun-light.svg';
+
 const SunriseLight = new URL(
   '../../assets/img/sunrise-light.svg',
   import.meta.url
