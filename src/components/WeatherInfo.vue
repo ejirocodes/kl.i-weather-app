@@ -1,6 +1,7 @@
 <script setup lang="ts">
-// import { generateTime } from "@/utils/date.utils";
+import { generateTime } from '@/utils/date.utils';
 </script>
+
 <template>
   <section
     class="tw-flex tw-w-[40rem] tw-flex-col tw-items-center tw-rounded-[2.4rem] tw-bg-pri tw-py-16 tw-text-center tw-text-white"
@@ -56,12 +57,12 @@
         Pressure
       </div>
     </div>
-    <!-- <div>{{ generateTime() }}</div> -->
-    <!-- {{ new Date().toLocaleDateString() }} -->
+    <div>{{ generateTime() }}</div>
+    {{ new Date().toLocaleDateString() }}
   </section>
 </template>
 
-<style scoped>
+<!-- <style scoped>
 .temp,
 .temp .deg {
   background: -webkit-linear-gradient(-90deg, #eeeeee 20%, transparent 80%);
@@ -72,4 +73,4 @@
 .temp .deg {
   background: -webkit-linear-gradient(221deg, #eeeeee, transparent 60%);
 }
-</style>
+</style> -->
