@@ -37,10 +37,23 @@ onMounted(() => {
 
 <template>
   <main
-    class="tw-flex tw-min-h-screen tw-w-full tw-justify-between tw-bg-white tw-p-8"
+    class="tw-flex tw-min-h-screen tw-w-full tw-flex-col tw-justify-between tw-bg-white tw-p-8 sm:tw-flex-row"
   >
-    <div class="tw-w-1/2 tw-bg-red-50">Hello</div>
-    <button></button>
+    <div class="tw-w-1/2 tw-bg-[#EFEFF0]">
+      <h1 class="tw-text-8xl tw-font-semibold">
+        Weather &amp; Forecast
+        <span
+          ><img src="@/assets/img/weather.svg" alt="Weather" class="tw-w-20"
+        /></span>
+        Application
+      </h1>
+      <button
+        @click="getRandomWeather"
+        class="tw-rounded-full tw-bg-pri tw-px-10 tw-py-4 tw-text-white tw-shadow-lg tw-shadow-pri/25 tw-transition-all hover:tw-shadow-md hover:tw-shadow-pri/30 active:tw-scale-95 active:tw-shadow-md active:tw-shadow-pri/0"
+      >
+        Random weather
+      </button>
+    </div>
     <div class="tw-w-[60%] tw-bg-gray1" v-if="weather">
       <WeatherInfo :weather="weather" />
     </div>
