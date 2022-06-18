@@ -1,4 +1,4 @@
-import { describe, it, beforeEach, afterEach, expect } from 'vitest';
+import { describe, it, beforeEach, expect } from 'vitest';
 import { mount, VueWrapper } from '@vue/test-utils';
 import WeatherIcon from '../../src/components/weather/WeatherIcon.vue';
 

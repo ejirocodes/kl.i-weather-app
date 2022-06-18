@@ -9,7 +9,7 @@ defineProps<{
 <template>
   <div class="tw-mr-8 tw-capitalize">
     <img :src="icon" :alt="name" class="tw-w-20" />
-    <p>{{ name }}</p>
-    <p>{{ stat }}</p>
+    <p data-test="name">{{ name }}</p>
+    <p data-test="stat">{{ stat }}</p>
   </div>
 </template>
