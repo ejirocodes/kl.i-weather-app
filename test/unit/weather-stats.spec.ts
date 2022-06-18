@@ -1,5 +1,6 @@
-import { describe, it, beforeEach, expect } from 'vitest';
-import { mount, VueWrapper } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import WeatherStats from '../../src/components/weather/WeatherStats.vue';
 
 const icon =

@@ -9,6 +9,7 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
+    setupFiles: ['./test/unit/setup.ts'],
   },
   resolve: {
     alias: {
