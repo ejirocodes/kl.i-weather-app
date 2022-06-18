@@ -55,7 +55,7 @@ onMounted(() => {
         information about daily forecast on-the-fly.
       </p>
       <button
-        data-test="get-weather-btn"
+        data-test="random-weather-btn"
         :disabled="isLoading"
         @click="getRandomWeather"
         :class="{
