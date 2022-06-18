@@ -45,7 +45,10 @@ const isDay = computed(() => props.weather?.weather[0].icon?.includes('d'));
       </p>
 
       <div class="tw-mb-14">
-        <h1 class="temp tw-relative tw-text-[10rem] tw-font-bold">
+        <h1
+          class="temp tw-relative tw-text-[10rem] tw-font-bold"
+          data-test="temperature"
+        >
           {{ kelVinToCel(weather?.main?.temp as number) || 0 }}c
         </h1>
         <WeatherIcon :icon="WeatherIconsData[icon]" />
