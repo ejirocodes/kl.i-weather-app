@@ -33,7 +33,7 @@ const isDay = computed(() => props.weather?.weather[0].icon?.includes('d'));
 <template>
   <div class="mxa tw-relative tw-z-10 tw-mx-auto tw-p-10">
     <section
-      class="tw-mx-auto tw-mt-16 tw-flex tw-w-[37rem] tw-flex-col tw-items-center tw-rounded-[3rem] tw-bg-pri tw-py-16 tw-pb-20 tw-text-center tw-text-white"
+      class="tw-mx-auto tw-my-6 tw-flex tw-w-[30rem] tw-flex-col tw-items-center tw-rounded-[3rem] tw-bg-pri tw-p-10 tw-text-center tw-text-white"
     >
       <h1 class="tw-mb-2 tw-text-4xl tw-font-semibold">
         {{ weather?.name || 'Unknow location' }}
@@ -44,9 +44,9 @@ const isDay = computed(() => props.weather?.weather[0].icon?.includes('d'));
         {{ weather?.weather[0]?.description || 'Unknow weather' }}
       </p>
 
-      <div class="tw-mb-14">
+      <div class="tw-mb-7">
         <h1
-          class="temp tw-relative tw-text-[10rem] tw-font-bold"
+          class="temp tw-relative tw-text-[8rem] tw-font-bold"
           data-test="temperature"
         >
           {{ kelVinToCel(weather?.main?.temp as number) || 0 }}c
@@ -77,7 +77,7 @@ const isDay = computed(() => props.weather?.weather[0].icon?.includes('d'));
           :stat="(weather?.main.pressure as number)"
         />
       </div>
-      <time class="tw-pt-6">
+      <time class="tw-pt-6 tw-text-sm">
         {{
           new Date().toLocaleDateString('en-US', {
             day: 'numeric',
@@ -88,7 +88,7 @@ const isDay = computed(() => props.weather?.weather[0].icon?.includes('d'));
       </time>
     </section>
     <div
-      class="tw-absolute tw-top-[54px] tw-left-[148px] -tw-z-10 tw-h-[899px] tw-w-[37rem] tw-rotate-6 tw-rounded-[3rem] tw-bg-sec"
+      class="tw-absolute tw-top-[54px] tw-left-[128px] -tw-z-10 tw-h-[630px] tw-w-[30rem] tw-rotate-6 tw-rounded-[3rem] tw-bg-sec"
     ></div>
   </div>
 </template>

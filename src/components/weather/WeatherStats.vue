@@ -8,8 +8,8 @@ defineProps<{
 
 <template>
   <div class="tw-mr-8 tw-capitalize">
-    <img :src="icon" :alt="name" class="tw-w-20" />
-    <p data-test="name">{{ name }}</p>
-    <p data-test="stat">{{ stat }}</p>
+    <img :src="icon" :alt="name" class="tw-w-16" />
+    <p data-test="name" class="tw-text-xs">{{ name }}</p>
+    <p data-test="stat" class="tw-text-sm">{{ stat }}</p>
   </div>
 </template>

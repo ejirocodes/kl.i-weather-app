@@ -73,7 +73,7 @@ onMounted(() => {
         <SpinnerMd v-if="isLoadingLocation" class="tw-h-8 tw-w-8" />
         <svg
           v-else
-          class="tw-h-8 tw-w-8 tw-text-gray-400"
+          class="tw-h-8 tw-w-8 tw-text-pri"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -91,7 +91,7 @@ onMounted(() => {
     </form>
   </header>
   <main
-    class="tw-flex tw-min-h-screen tw-w-full tw-flex-col tw-justify-between tw-bg-white tw-p-8 tw-pt-0 sm:tw-flex-row"
+    class="tw-flex tw-min-h-[90vh] tw-w-full tw-flex-col tw-justify-between tw-bg-white tw-p-8 tw-pt-0 sm:tw-flex-row"
   >
     <div class="tw-w-1/2 tw-bg-[#EFEFF0] tw-p-8">
       <h1 class="tw-mb-10 tw-text-8xl tw-font-semibold tw-leading-[6.5rem]">
@@ -118,17 +118,14 @@ onMounted(() => {
         }"
         class="tw-rounded-full tw-bg-pri tw-px-10 tw-py-4 tw-text-white tw-shadow-lg tw-shadow-pri/25 tw-transition-all hover:tw-shadow-md hover:tw-shadow-pri/30 active:tw-scale-95 active:tw-shadow-md active:tw-shadow-pri/0"
       >
-        {{ isLoading ? 'Processing...' : 'Random weather' }}
+        {{ isLoading ? 'Please wait...' : 'Random weather' }}
       </button>
     </div>
-    <div
-      class="tw-w-[60%] tw-bg-gray1"
-      :class="{
-        'tw-flex tw-items-center tw-justify-center': isLoading,
-      }"
-    >
+    <div class="tw-w-[60%] tw-bg-gray1">
       <WeatherInfo :weather="weather" v-if="weather" />
-      <SpinnerMd v-else />
+      <div v-else class="tw-flex tw-h-full tw-items-center tw-justify-center">
+        <SpinnerMd />
+      </div>
     </div>
   </main>
 </template>
