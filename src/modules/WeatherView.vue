@@ -6,6 +6,7 @@ import { getWeather } from '@/services/weather.searvice';
 import type { Weather } from '@/types/interfact';
 import { generateRandomLatLng } from '@/utils/latlng.utils';
 import SpinnerMd from '@/components/shared/SpinnerMd.vue';
+import SearchInput from '@/components/shared/SearchInput.vue';
 
 const $axios = inject('$axios') as AxiosStatic;
 const cordinates = reactive({
@@ -13,6 +14,7 @@ const cordinates = reactive({
   lng: 0,
 });
 const weather = ref<Weather | null>(null);
+const searchVal = ref('');
 const isLoading = ref(false);
 
 const getRandomWeather = async () => {
@@ -36,8 +38,36 @@ onMounted(() => {
 </script>
 
 <template>
+  <header class="tw-mb-2">
+    <form
+      class="tw-mx-auto tw-flex tw-w-1/3 tw-items-center tw-justify-center"
+      @submit.prevent
+    >
+      <SearchInput
+        v-model:value="searchVal"
+        placeholder="Seach by city and country"
+      />
+      <button :title="searchVal ? 'Search' : 'Please enter a query'">
+        <svg
+          class="tw-h-8 tw-w-8 tw-text-gray-400"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          />
+        </svg>
+      </button>
+    </form>
+  </header>
   <main
-    class="tw-flex tw-min-h-screen tw-w-full tw-flex-col tw-justify-between tw-bg-white tw-p-8 sm:tw-flex-row"
+    class="tw-flex tw-min-h-screen tw-w-full tw-flex-col tw-justify-between tw-bg-white tw-p-8 tw-pt-0 sm:tw-flex-row"
   >
     <div class="tw-w-1/2 tw-bg-[#EFEFF0] tw-p-8">
       <h1 class="tw-mb-10 tw-text-8xl tw-font-semibold tw-leading-[6.5rem]">
@@ -69,7 +99,9 @@ onMounted(() => {
     </div>
     <div
       class="tw-w-[60%] tw-bg-gray1"
-      :class="{ 'tw-flex tw-items-center tw-justify-center': !weather }"
+      :class="{
+        'tw-flex tw-items-center tw-justify-center': isLoading,
+      }"
     >
       <WeatherInfo :weather="weather" v-if="weather" />
       <SpinnerMd v-else />

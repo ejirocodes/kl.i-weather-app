@@ -25,11 +25,12 @@ describe('WeatherView', () => {
     const randomWeatherBtn = await wrapper.find(
       '[data-test="random-weather-btn"]'
     );
+
     await randomWeatherBtn.trigger('click');
 
     expect(wrapper.vm.weather).toBeDefined();
 
-    // weatherInfo weather props be defined
+    // weatherInfo weather props be defined after api call
     expect(weatherInfo.props('weather')).toBeDefined();
     expect(weatherInfo.find('[data-test="temperature"]').text()).toBe('9c');
   });
