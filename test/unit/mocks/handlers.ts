@@ -1,4 +1,6 @@
 import { rest } from 'msw';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import mock from './mock.json';
 
 export const getWeather = [

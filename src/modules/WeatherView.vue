@@ -7,6 +7,7 @@ import type { Weather } from '@/types/interfact';
 import { generateRandomLatLng } from '@/utils/latlng.utils';
 import SpinnerMd from '@/components/shared/SpinnerMd.vue';
 import SearchInput from '@/components/shared/SearchInput.vue';
+import ErrorDisplay from '@/components/shared/ErrorDisplay.vue';
 
 const $axios = inject('$axios') as AxiosStatic;
 const cordinates = reactive({
@@ -14,6 +15,7 @@ const cordinates = reactive({
   lng: 0,
 });
 const weather = ref<Weather | null>(null);
+const errorMessage = ref<string>('');
 const isLoading = ref(false);
 
 const getRandomWeather = async () => {
@@ -28,8 +30,9 @@ const getRandomWeather = async () => {
       cordinates.lng
     );
     weather.value = data;
-  } catch (error) {
-    console.log(error);
+  } catch (error: any) {
+    errorMessage.value =
+      error?.response?.data?.message || 'Something went wrong';
   } finally {
     isLoading.value = false;
   }
@@ -44,8 +47,9 @@ const getWeatherByLocation = async () => {
     const { data } = await getWeather($axios, location.value);
     weather.value = data;
     location.value = '';
-  } catch (error) {
-    console.log(error);
+  } catch (error: any) {
+    errorMessage.value =
+      error?.response?.data?.message || 'Something went wrong';
   } finally {
     isLoadingLocation.value = false;
   }
@@ -121,6 +125,7 @@ onMounted(() => {
       >
         {{ isLoading ? 'Please wait...' : 'Random weather' }}
       </button>
+      <ErrorDisplay v-if="errorMessage" :error-message="errorMessage" />
     </div>
     <div class="tw-w-[60%] tw-bg-gray1">
       <WeatherInfo :weather="weather" v-if="weather" />
