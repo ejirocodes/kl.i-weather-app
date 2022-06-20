@@ -16,11 +16,13 @@ const cordinates = reactive({
 });
 const weather = ref<Weather | null>(null);
 const errorMessage = ref<string>('');
-const isLoading = ref(false);
+const isLoading = ref(true);
 
 const getRandomWeather = async () => {
   try {
     isLoading.value = true;
+    errorMessage.value = '';
+    searchLocation.value = '';
     const { lat, lng } = generateRandomLatLng();
     cordinates.lat = lat;
     cordinates.lng = lng;
@@ -38,15 +40,17 @@ const getRandomWeather = async () => {
   }
 };
 
-const location = ref('');
+const searchLocation = ref('');
 const isLoadingLocation = ref(false);
+
 const getWeatherByLocation = async () => {
-  if (!location.value) return;
+  if (!searchLocation.value) return;
   try {
+    errorMessage.value = '';
     isLoadingLocation.value = true;
-    const { data } = await getWeather($axios, location.value);
+    const { data } = await getWeather($axios, searchLocation.value);
     weather.value = data;
-    location.value = '';
+    searchLocation.value = '';
   } catch (error: any) {
     errorMessage.value =
       error?.response?.data?.message || 'Something went wrong';
@@ -67,12 +71,12 @@ onMounted(() => {
       @submit.prevent
     >
       <SearchInput
-        v-model:value="location"
+        v-model:value="searchLocation"
         placeholder="Seach by city and country"
       />
       <button
         data-test="search-btn"
-        :title="location ? 'Search' : 'Please enter a query'"
+        :title="searchLocation ? 'Search' : 'Please enter a query'"
         @click="getWeatherByLocation"
       >
         <SpinnerMd v-if="isLoadingLocation" class="tw-h-8 tw-w-8" />
