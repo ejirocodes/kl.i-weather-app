@@ -5,6 +5,7 @@ import type { AxiosStatic } from 'axios';
 import { getWeather } from '@/services/weather.searvice';
 import type { Weather } from '@/types/interfact';
 import { generateRandomLatLng } from '@/utils/latlng.utils';
+import SpinnerMd from '@/components/shared/SpinnerMd.vue';
 
 const $axios = inject('$axios') as AxiosStatic;
 const cordinates = reactive({
@@ -66,8 +67,12 @@ onMounted(() => {
         {{ isLoading ? 'Processing...' : 'Random weather' }}
       </button>
     </div>
-    <div class="tw-w-[60%] tw-bg-gray1" v-if="weather">
-      <WeatherInfo :weather="weather" />
+    <div
+      class="tw-w-[60%] tw-bg-gray1"
+      :class="{ 'tw-flex tw-items-center tw-justify-center': !weather }"
+    >
+      <WeatherInfo :weather="weather" v-if="weather" />
+      <SpinnerMd v-else />
     </div>
   </main>
 </template>

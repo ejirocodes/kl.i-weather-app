@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { mount } from '@vue/test-utils';
+// @ts-ignore
 import WeatherView from '@/modules/WeatherView.vue';
-import { getWeather } from './mocks/handlers';
 import axios from 'axios';
 import weather from './mocks/mock.json';
+// @ts-ignore
 import WeatherInfo from '@/components/weather/WeatherInfo.vue';
 
 describe('WeatherView', () => {
