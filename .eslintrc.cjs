@@ -23,11 +23,4 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     'prettier/prettier': ['error', { singleQuote: true }],
   },
-
-  overrides: [
-    {
-      files: ['cypress/e2e/**.{cy,spec}.{js,ts,jsx,tsx}'],
-      extends: ['plugin:cypress/recommended'],
-    },
-  ],
 };
