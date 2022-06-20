@@ -18,7 +18,7 @@ npm install
 
 ### Start the Vite server
 
-After installing the neccesary dependencies, run the following command on the terminal to run the dev server on port `3000` (default port)
+After installing the neccesary dependencies, run the following command on the terminal to run the dev server on port `3000` (default port) and serve the project on [http://localhost:3000](http://localhost:3000)
 
 ```bash
 npm run dev
@@ -41,8 +41,6 @@ For support, email ejiroasiuwhu@gmail.com.
 - End to end tests for the weather app with Cypress
 
 - Fetch, and cache the weather data from the OpenWeather API using [Vue Query](https://github.com/DamianOsipiuk/vue-query)
-
-- Mobile Responsive Design
 
 # Welcome to the interview task :)
 
