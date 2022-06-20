@@ -36,15 +36,18 @@ const getRandomWeather = async () => {
 };
 
 const location = ref('');
+const isLoadingLocation = ref(false);
 const getWeatherByLocation = async () => {
+  if (!location.value) return;
   try {
-    isLoading.value = true;
+    isLoadingLocation.value = true;
     const { data } = await getWeather($axios, location.value);
     weather.value = data;
+    location.value = '';
   } catch (error) {
     console.log(error);
   } finally {
-    isLoading.value = false;
+    isLoadingLocation.value = false;
   }
 };
 
@@ -67,7 +70,9 @@ onMounted(() => {
         :title="location ? 'Search' : 'Please enter a query'"
         @click="getWeatherByLocation"
       >
+        <SpinnerMd v-if="isLoadingLocation" class="tw-h-8 tw-w-8" />
         <svg
+          v-else
           class="tw-h-8 tw-w-8 tw-text-gray-400"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"

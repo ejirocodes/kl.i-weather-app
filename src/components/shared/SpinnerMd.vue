@@ -1,5 +1,6 @@
 <template>
   <svg
+    aria-label="Loading"
     role="status"
     class="tw-tw-mr-2 tw-inline tw-h-24 tw-w-24 tw-animate-spin tw-cursor-wait tw-text-white"
     viewBox="0 0 100 101"
