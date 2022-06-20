@@ -31,9 +31,9 @@ const isDay = computed(() => props.weather?.weather[0].icon?.includes('d'));
 </script>
 
 <template>
-  <div class="mxa tw-relative tw-z-10 tw-mx-auto tw-p-10">
+  <div class="mxa tw-relative tw-z-10 tw-mx-auto tw-p-5 md:tw-p-10">
     <section
-      class="tw-mx-auto tw-my-6 tw-flex tw-w-[30rem] tw-flex-col tw-items-center tw-rounded-[3rem] tw-bg-pri tw-p-10 tw-text-center tw-text-white"
+      class="tw-mx-auto tw-my-1 tw-flex tw-w-full tw-flex-col tw-items-center tw-rounded-[3rem] tw-bg-pri tw-p-6 tw-text-center tw-text-white md:tw-my-6 md:tw-w-[30rem] md:tw-p-10"
     >
       <h1 class="tw-mb-2 tw-text-4xl tw-font-semibold">
         {{ weather?.name || 'Unknow location' }}
@@ -88,7 +88,7 @@ const isDay = computed(() => props.weather?.weather[0].icon?.includes('d'));
       </time>
     </section>
     <div
-      class="tw-absolute tw-top-[54px] tw-left-[128px] -tw-z-10 tw-h-[630px] tw-w-[30rem] tw-rotate-6 tw-rounded-[3rem] tw-bg-sec"
+      class="tw-absolute tw-top-[54px] tw-left-[128px] -tw-z-10 tw-hidden tw-h-[630px] tw-w-[30rem] tw-rotate-6 tw-rounded-[3rem] tw-bg-sec md:tw-block"
     ></div>
   </div>
 </template>

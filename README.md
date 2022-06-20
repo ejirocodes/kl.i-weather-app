@@ -1,3 +1,49 @@
+# Exercise - Weather App (kloeckner.i)
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`VITE_APP_OPENWEATHER_BASEURL` - The base URL for the OpenWeather API (<https://api.openweathermap.org/data/2.5/weather>)
+
+`VITE_APP_OPENWEATHER_APIKEY` - The API key for the OpenWeather API. You can get one at <https://openweathermap.org/api>
+
+### Install Dependences
+
+To set up the project, run the following command on the root folder after cloning the repository to install the dependencies
+
+```bash
+npm install
+```
+
+### Start the Vite server
+
+After installing the neccesary dependencies, run the following command on the terminal to run the dev server on port `3000` (default port)
+
+```bash
+npm run dev
+```
+
+## Running Test
+
+To run tests, run the following command on the terminal
+
+```bash
+  npm run test:unit
+```
+
+## Support
+
+For support, email ejiroasiuwhu@gmail.com.
+
+## Roadmap
+
+- End to end tests for the weather app with Cypress
+
+- Fetch, and cache the weather data from the OpenWeather API using [Vue Query](https://github.com/DamianOsipiuk/vue-query)
+
+- Mobile Responsive Design
+
 # Welcome to the interview task :)
 
 If something is not clear or you need help - just ask :). Nobody knows everything!

@@ -67,7 +67,7 @@ onMounted(() => {
 <template>
   <header class="tw-mb-2">
     <form
-      class="tw-mx-auto tw-flex tw-w-1/3 tw-items-center tw-justify-center"
+      class="tw-mx-auto tw-flex tw-w-full tw-items-center tw-justify-center tw-p-3 md:tw-w-1/3"
       @submit.prevent
     >
       <SearchInput
@@ -100,21 +100,23 @@ onMounted(() => {
     </form>
   </header>
   <main
-    class="tw-flex tw-min-h-[90vh] tw-w-full tw-flex-col tw-justify-between tw-bg-white tw-p-8 tw-pt-0 sm:tw-flex-row"
+    class="tw-flex tw-w-full tw-flex-col tw-justify-between tw-bg-white tw-p-8 tw-pt-0 sm:tw-flex-row md:tw-min-h-[90vh]"
   >
-    <div class="tw-w-1/2 tw-bg-[#EFEFF0] tw-p-8">
-      <h1 class="tw-mb-10 tw-text-8xl tw-font-semibold tw-leading-[6.5rem]">
+    <div class="tw-w-full tw-bg-[#EFEFF0] tw-p-8 md:tw-w-1/2">
+      <h1
+        class="tw-mb-4 tw-text-4xl tw-font-semibold md:tw-mb-10 md:tw-text-8xl md:tw-leading-[6.5rem]"
+      >
         Weather &amp;
-        <span class="tw-text-primary tw-text-bold tw-flex tw-items-center"
+        <span class="tw-text-bold tw-flex tw-items-center"
           >Forecast
           <img
             src="@/assets/img/weather.svg"
             alt="Weather"
-            class="tw-ml-4 tw-w-20"
+            class="tw-ml-4 tw-w-8 md:tw-w-20"
         /></span>
         Application
       </h1>
-      <p class="tw-mb-10 tw-text-lg tw-text-gray-500">
+      <p class="tw-mb-10 tw-text-base tw-text-gray-500 md:tw-text-lg">
         Stay updated with weather information, use the weather app to get
         information about daily forecast on-the-fly.
       </p>
@@ -131,7 +133,7 @@ onMounted(() => {
       </button>
       <ErrorDisplay v-if="errorMessage" :error-message="errorMessage" />
     </div>
-    <div class="tw-w-[60%] tw-bg-gray1">
+    <div class="tw-w-full tw-bg-gray1 md:tw-w-[60%]">
       <WeatherInfo :weather="weather" v-if="weather" />
       <div v-else class="tw-flex tw-h-full tw-items-center tw-justify-center">
         <SpinnerMd />

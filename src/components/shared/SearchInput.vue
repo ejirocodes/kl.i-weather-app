@@ -18,7 +18,9 @@ const updateSearch = (event: Event) => {
 </script>
 
 <template>
-  <div class="tw-relative tw-mr-[8px] tw-w-full tw-rounded-md tw-shadow-sm">
+  <div
+    class="tw-relative tw-mr-[8px] tw-w-full tw-rounded-md tw-shadow-md tw-transition-shadow hover:tw-shadow-sm"
+  >
     <input
       data-test="input"
       autofocus
