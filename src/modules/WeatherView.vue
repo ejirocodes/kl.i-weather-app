@@ -2,7 +2,7 @@
 import WeatherInfo from '../components/weather/WeatherInfo.vue';
 import { ref, inject, onMounted, reactive } from 'vue';
 import type { AxiosStatic } from 'axios';
-import { getWeather } from '@/services/weather.searvice';
+import { getWeather, getWeatherLatLng } from '@/services/weather.searvice';
 import type { Weather } from '@/types/interfact';
 import { generateRandomLatLng } from '@/utils/latlng.utils';
 import SpinnerMd from '@/components/shared/SpinnerMd.vue';
@@ -14,7 +14,6 @@ const cordinates = reactive({
   lng: 0,
 });
 const weather = ref<Weather | null>(null);
-const searchVal = ref('');
 const isLoading = ref(false);
 
 const getRandomWeather = async () => {
@@ -23,15 +22,32 @@ const getRandomWeather = async () => {
     const { lat, lng } = generateRandomLatLng();
     cordinates.lat = lat;
     cordinates.lng = lng;
-    const { data } = await getWeather($axios, cordinates.lat, cordinates.lng);
+    const { data } = await getWeatherLatLng(
+      $axios,
+      cordinates.lat,
+      cordinates.lng
+    );
     weather.value = data;
-    console.log(weather.value);
   } catch (error) {
     console.log(error);
   } finally {
     isLoading.value = false;
   }
 };
+
+const location = ref('');
+const getWeatherByLocation = async () => {
+  try {
+    isLoading.value = true;
+    const { data } = await getWeather($axios, location.value);
+    weather.value = data;
+  } catch (error) {
+    console.log(error);
+  } finally {
+    isLoading.value = false;
+  }
+};
+
 onMounted(() => {
   getRandomWeather();
 });
@@ -44,10 +60,13 @@ onMounted(() => {
       @submit.prevent
     >
       <SearchInput
-        v-model:value="searchVal"
+        v-model:value="location"
         placeholder="Seach by city and country"
       />
-      <button :title="searchVal ? 'Search' : 'Please enter a query'">
+      <button
+        :title="location ? 'Search' : 'Please enter a query'"
+        @click="getWeatherByLocation"
+      >
         <svg
           class="tw-h-8 tw-w-8 tw-text-gray-400"
           aria-hidden="true"
