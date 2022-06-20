@@ -67,6 +67,7 @@ onMounted(() => {
         placeholder="Seach by city and country"
       />
       <button
+        data-test="search-btn"
         :title="location ? 'Search' : 'Please enter a query'"
         @click="getWeatherByLocation"
       >

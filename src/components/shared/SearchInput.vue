@@ -20,6 +20,7 @@ const updateSearch = (event: Event) => {
 <template>
   <div class="tw-relative tw-mr-[8px] tw-w-full tw-rounded-md tw-shadow-sm">
     <input
+      data-test="input"
       autofocus
       id="search"
       type="search"
